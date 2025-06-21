@@ -20,12 +20,19 @@ Lav en getter metode til range attributten på Ranged klassen.
 Forsøg at gennemløbe Fofstelr’s våbenliste og kald getRange() metoden. Overvej hvorfor du
 får en kompilefejl, når du forsøger dette.
 
+(Man kan ved nedarvning ikke kalde metoder på superklassen, hvis de ikke er defineret i subklassen)
+
 c) En ranger https://www.dndbeyond.com/classes/ranger kan både bruge våben og kaste
 spells. Lav en Ranger klasse der både nedarver fra Spellcaster og Warrior klassen. Hvad siger
 kompileren til dette?
+
+ranger klassen kan ikke nedarve fra både Spellcaster og Warrior, da en abstrakt klassen kun kan nedarves
+en gang. dette kan løses ved at lave en interface, som både Spellcaster og Warrior implementerer.
+
 Opgave 2
+
 a) Tilføj toString metoder til modelklasserne Actor, Director, Movie og TVSerie.
-2/2
+
 
 b) Tilføj metoder i Storage klassen der printer alle film og serier der er gemt i movies og
 series attributterne.

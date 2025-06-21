@@ -10,4 +10,13 @@ public class Director {
         this.name = name;
         this.birthday = birthday;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Director: %s (Born: %s)", name, birthday);
+    }
 }

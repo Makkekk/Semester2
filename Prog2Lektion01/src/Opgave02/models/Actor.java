@@ -11,4 +11,9 @@ public class Actor {
         this.name = name;
         this.birthday = birthday;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Actor: %s (Born: %s)", name, birthday);
+    }
 }
