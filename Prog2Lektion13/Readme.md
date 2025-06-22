@@ -21,6 +21,8 @@ talrække.
 Opgave 3
 Betragt følgende klassediagram
 
+![img.png](img.png)
+
 a) Implementer de to klasser med de viste attributter og metoder. Tilføj
 passende constructor. Lav link attributten i College klassen som en
 List<Student> og brug ArrayList som konkret objekt.

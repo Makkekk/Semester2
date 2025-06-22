@@ -15,6 +15,16 @@ public class Customer {
         return name;
     }
 
+    public void addBook(Book book) {
+        if (!boughtBooks.contains(book)) {
+            boughtBooks.add(book);
+        }
+    }
+
+    public List<Book> getBoughtBooks() {
+        return boughtBooks;
+    }
+
     @Override
     public String toString() {
         return name;

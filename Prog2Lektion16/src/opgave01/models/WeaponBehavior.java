@@ -1,8 +1,7 @@
 package opgave01.models;
 
-public class WeaponBehavior {
+public interface WeaponBehavior {
 
-    public void useWeapon() {
-
+    void useWeapon();
     }
-}
+

@@ -1,5 +1,7 @@
 package examples.note.models.models;
 
+import examples.note.models.Student;
+import examples.note.models.TooManyGradesException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

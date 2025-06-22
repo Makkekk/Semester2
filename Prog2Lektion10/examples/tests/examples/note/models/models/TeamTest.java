@@ -1,6 +1,8 @@
 package examples.note.models.models;
 
 
+import examples.note.models.Student;
+import examples.note.models.Team;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

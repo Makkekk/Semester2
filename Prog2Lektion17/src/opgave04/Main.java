@@ -1,60 +1,74 @@
 package opgave04;
 
 import opgave04.models.Book;
+import opgave04.models.Buyer;
 import opgave04.models.Customer;
+import opgave04.models.Salesman;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO: create a salesman and a purchaser
+        // Opret observatører
+        Salesman salesman1 = new Salesman("Svend");
+        Salesman salesman2 = new Salesman("Søren");
+        Buyer buyer = new Buyer("Benny");
 
+        // Opret bøger og tilføj observatører
         Book donaldDuck = new Book("Donald Duck");
-        // TODO: add observers
-
-        // TODO: make purchaser buy 6 copies of donaldDuck
+        donaldDuck.registerObserver(salesman1);
+        donaldDuck.registerObserver(salesman2);
+        donaldDuck.registerObserver(buyer);
+        buyer.buyBook(donaldDuck, 6); // Køber 6 stk
         System.out.println();
 
         Book java = new Book("Java");
-        // TODO: add observers
-
-        // TODO: make purchaser buy 8 copies of java
+        java.registerObserver(salesman1);
+        java.registerObserver(buyer);
+        buyer.buyBook(java, 8);
         System.out.println();
 
         Book designPatterns = new Book("Design Patterns");
-        // TODO: add observers
-
-        // TODO: make purchaser buy 10 copies of designPatterns
+        designPatterns.registerObserver(salesman1);
+        designPatterns.registerObserver(buyer);
+        buyer.buyBook(designPatterns, 10);
         System.out.println();
 
+        // Opret kunder
         Customer bob = new Customer("Bob");
         Customer alice = new Customer("Alice");
         Customer harry = new Customer("Harry");
 
-        //---------------------------------------------------------------------
-
+        // Simuler salg
         makeSale(donaldDuck, bob);
-        System.out.println();
         makeSale(donaldDuck, alice);
-        System.out.println();
         makeSale(donaldDuck, harry);
-        System.out.println();
 
         makeSale(java, bob);
-        System.out.println();
         makeSale(java, alice);
-        System.out.println();
         makeSale(java, harry);
-        System.out.println();
 
         makeSale(designPatterns, bob);
-        System.out.println();
 
-        // TODO: print each customer and his/her books
+        // Udskriv kunders køb
+        System.out.println("Kundernes køb:");
+        for (Customer c : List.of(bob, alice, harry)) {
+            System.out.println(c.getName() + " har købt:");
+            for (Book b : c.getBoughtBooks()) {
+                System.out.println("  - " + b.getTitle());
+            }
+            System.out.println();
+        }
     }
 
     public static void makeSale(Book book, Customer customer) {
         System.out.println("Sale: " + book + " sold to " + customer.getName());
-        // TODO: link customer and book
-        book.decCount(1);
-    }
 
+        book.decCount(1);
+        customer.addBook(book);
+        book.addCustomer(customer);
+
+        book.notifyObservers(book, customer);
+        System.out.println();
+    }
 }

@@ -7,19 +7,27 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import opgave05.ObserverStrategi.Observer;
+import opgave05.ObserverStrategi.Subject;
 
-public class SubWindow extends Stage {
+public class SubWindow extends Stage implements Observer {
     private final GridPane pane = new GridPane();
+    private Subject subject;
+    private String color;
 
-    public SubWindow(String title, Stage owner) {
-        this.initOwner(owner);
+    public SubWindow(String title, String color, Stage owner, Subject subject) {
+        this.subject = subject;
+        this.initOwner(owner); // correct use!
+        this.setTitle(title);
+        this.color = color;
+        this.initContent();
         this.initStyle(StageStyle.UTILITY);
-        this.setMinHeight(100);
         this.setMinWidth(200);
+        this.setMinHeight(100);
         this.setResizable(false);
 
-        this.setTitle(title);
-        this.initContent();
+
+        pane.setStyle("-fx-background-color: " + color);
 
         Scene scene = new Scene(pane);
         this.setScene(scene);
@@ -44,5 +52,20 @@ public class SubWindow extends Stage {
         pane.add(btnUnsubscribe, 0, 2);
 
         pane.add(this.lblInfo, 0, 3);
+
+        btnSubscribe.setOnAction(e -> {
+            subject.registerObserver(this);
+            lblInfo.setText("State: Subscribed");
+        });
+
+        btnUnsubscribe.setOnAction(e -> {
+            subject.removeObserver(this);
+            lblInfo.setText("State: Unsubscribed");
+        });
+
+    }
+    @Override
+    public void update(String color) {
+        pane.setStyle("-fx-background-color: " + color);
     }
 }
