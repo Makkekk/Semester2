@@ -3,7 +3,8 @@ package examples.maximum;
 import java.util.ArrayList;
 
 public class Maximum {
-    //The content of the ArrayList should implement the Camparable interface such that we can compare them
+    //The content of the ArrayList should implement the Comparable interface such that we can compare them
+
     public static <T extends Comparable<T>> T  maximum(ArrayList<T> candidates) {
         return maximum(candidates, 0, candidates.size() -1);
     }

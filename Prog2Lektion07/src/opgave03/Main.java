@@ -7,8 +7,17 @@ public class Main {
         }
     }
 
-    private static int threeXPlusOne(int x) {
-        return 0;
+    private static int threeXPlusOne(int n) {
+            if (n <= 0) {
+                throw new IllegalArgumentException("n skal være et positivt heltal");
+            }
+            if (n == 1) {
+                return 0;  // Stop, vi er nået til 1
+            }
+            if (n % 2 == 0) {  // n er lige
+                return 1 + threeXPlusOne(n / 2);
+            } else {           // n er ulige
+                return 1 + threeXPlusOne(3 * n + 1);
+            }
+        }
     }
-
-}

@@ -30,7 +30,7 @@ nye typer rabatter til.
 
 a) Start med at lave Discount klassen om, så det i stedet for at bruge DiscountTypen
 enum’en bruger et nedarvningshierarki
-2/3
+
 
 ![img.png](img.png)
 

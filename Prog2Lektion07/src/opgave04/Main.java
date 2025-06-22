@@ -2,11 +2,34 @@ package opgave04;
 
 public class Main {
     public static void main(String[] args) {
-        int[] intArray = new int[]{ -17, -3, 0, 5, 27, 42, 1001, Integer.MAX_VALUE};
-        boolean found = contains(intArray, 42);
+        int[] arr = {1, 4, 5, 7, 9, 12, 15, 20};
+        int target = 7;
+
+        boolean found = binarySearch(arr, target);
+        System.out.println("Findes " + target + " i arrayet? " + found);
     }
 
-    private static boolean contains(int[] candidates, int candidate) {
-        return false;
+    // Hovedmetode der kalder hjælpe-metoden
+    public static boolean binarySearch(int[] arr, int target) {
+        return binarySearchHelper(arr, target, 0, arr.length - 1);
+    }
+
+    // Hjælpe-metode med start og slut indeks
+    private static boolean binarySearchHelper(int[] arr, int target, int start, int end) {
+        if (start > end) {
+            return false; // Basis: interval tomt, tal ikke fundet
+        }
+
+        int mid = (start + end) / 2;
+
+        if (arr[mid] == target) {
+            return true; // Tal fundet
+        } else if (arr[mid] > target) {
+            // Søger i venstre halvdel
+            return binarySearchHelper(arr, target, start, mid - 1);
+        } else {
+            // Søger i højre halvdel
+            return binarySearchHelper(arr, target, mid + 1, end);
+        }
     }
 }

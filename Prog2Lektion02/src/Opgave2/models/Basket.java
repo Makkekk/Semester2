@@ -17,18 +17,24 @@ public class Basket {
     }
 
     public void printTotal() {
-        double totalDiscount = 0;
+        double total = 0;
         for (Book book : items) {
             System.out.printf("%-60s %6.2f kr.%n", book.getTitle(), book.getPrice());
+            total += book.getPrice();
         }
         System.out.println("-------------------------------------------------------------------------");
+
+        double totalDiscount = 0;
         for (Discount discount : discounts) {
-            double discountAmount = discount.applyDiscount(total);
+            double discountAmount = discount.applyDiscount(total, this);
             System.out.printf("%-60s %6.2f kr.%n", discount.getDescription(), discountAmount);
             totalDiscount += discountAmount;
         }
         double discountedTotal = total + totalDiscount;
         System.out.println("-------------------------------------------------------------------------");
-        System.out.printf("%-60s %5.2f kr.%n", "i alt: ", discountedTotal);
+        System.out.printf("%-60s %6.2f kr.%n", "i alt:", discountedTotal);
+    }
+    public ArrayList<Book> getItems() {
+        return items;
     }
 }

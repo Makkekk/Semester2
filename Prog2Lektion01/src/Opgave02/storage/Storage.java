@@ -1,10 +1,7 @@
 package Opgave02.storage;
 
 
-import Opgave02.models.Actor;
-import Opgave02.models.Director;
-import Opgave02.models.Movie;
-import Opgave02.models.TVSerie;
+import Opgave02.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +46,16 @@ public class Storage {
         for (Movie movie : movies) {
             if (movie.getDirector() != null && movie.getDirector().getName().equalsIgnoreCase(directorName)) {
                 result.add(movie);
+            }
+        }
+        return result;
+    }
+
+    public static List<TVSerie> findSeriesByGenre(Genre genre) {
+        List<TVSerie> result = new ArrayList<>();
+        for (TVSerie tvSerie : tvSeries) {
+            if (tvSerie.getGenresList().contains(genre)) {
+                result.add(tvSerie);
             }
         }
         return result;

@@ -2,6 +2,8 @@ package Opgave02.models;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TVSerie extends Watchables{
     private int numberOfSeasons;
@@ -10,6 +12,10 @@ public class TVSerie extends Watchables{
     public TVSerie(String title, int numberOfSeasons,Genre[] genres, ArrayList<Actor> actors) {
         super(title, genres, actors);
         this.numberOfSeasons = numberOfSeasons;
+    }
+
+    public List<Genre> getGenresList() {
+        return Arrays.asList(super.getGenres());
     }
 
     @Override

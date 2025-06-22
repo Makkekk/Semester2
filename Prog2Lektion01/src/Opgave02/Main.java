@@ -13,6 +13,18 @@ public class Main {
 
         Storage.PrintMovies();
         Storage.PrintTVSeries();
+
+        List<Movie> moviesByDirector = Storage.findMovieByDirectorName("George Walton Lucas Jr.");
+        System.out.println("Movies by George Walton Lucas Jr.:");
+        for (Movie movie : moviesByDirector) {
+            System.out.println(movie);
+        }
+
+        List<TVSerie> actionSeries = Storage.findSeriesByGenre(Genre.COMEDY);
+        System.out.println("\nComedy TV Series:");
+        for (TVSerie serie : actionSeries) {
+            System.out.println(serie);
+        }
     }
 
     private static void initStorage() {
@@ -53,6 +65,5 @@ public class Main {
         Storage.addTVSerie(friends);
 
 
-        Storage.findMovieByDirectorName("George Walton Lucas Jr.");
     }
 }

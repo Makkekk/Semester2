@@ -1,5 +1,7 @@
 package opgave01;
 
+import opgave01.models.IntegerVault;
+
 public class opgave01 {
     public static void main(String[] args) {
         IntegerVault integerVault = new IntegerVault(42, "My password");
